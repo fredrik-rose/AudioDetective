@@ -26,10 +26,10 @@ def get_default_parameters():
     """
     return FingerprintParameters(window_length=1024,
                                  window_overlap=512,
-                                 time_bin_size=2,
-                                 frequency_bin_size=2,
-                                 target_zone_offset=4,
-                                 target_zone_size=16)
+                                 time_bin_size=1,
+                                 frequency_bin_size=1,
+                                 target_zone_offset=16,
+                                 target_zone_size=8)
 
 
 def fingerprint(signal, sampling_frequency, parameters: FingerprintParameters, visualize=False):
@@ -90,17 +90,27 @@ def _fingerprint_from_points(times, frequencies, target_zone_offset, target_zone
     :param target_zone_size: Number of points to relate each anchor point to.
     :return: Fingerprints, {descriptor: [times]}.
     """
+    def find_first_point_after_time(points, time):
+        """
+        Finds the first point after a given time.
+        :param points: Time-frequency points.
+        :param time: Time.
+        :return: Index of first point after time or length of points if no point is found.
+        """
+        for i, point in enumerate(points):
+            if point[0] > time:
+                return i
+        return len(points)
+
     points = sorted(zip(times, frequencies), key=lambda point: (point[0], point[1]))
     fingerprints = collect.defaultdict(set)
-    for i, anchor in enumerate(points):
+    for anchor in points:
         anchor_time = anchor[0]
         anchor_frequency = anchor[1]
-        target_zone = slice(i + target_zone_offset + 1,
-                            i + target_zone_offset + 1 + target_zone_size)
+        start_index = find_first_point_after_time(points, anchor_time + target_zone_offset)
+        target_zone = slice(start_index, start_index + target_zone_size)
         for point in points[target_zone]:
-            time = point[0]
-            frequency = point[1]
-            descriptor = _fingerprint_descriptor(time, frequency, anchor_frequency, anchor_time)
+            descriptor = _fingerprint_descriptor(point[0], point[1], anchor_frequency, anchor_time)
             fingerprints[descriptor].add(anchor_time)
     return dict(fingerprints)
 
