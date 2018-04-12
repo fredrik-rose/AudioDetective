@@ -94,6 +94,17 @@ class FingerprintDatabase():
                             (song_id,))
         return self.cursor.fetchone()[0]
 
+    def get_all_songs(self):
+        """
+        Gets the title of all songs stored in the database.
+        :return: List of all songs in the database.
+        """
+        self.cursor.execute("""SELECT {title_column} FROM {table}"""
+                            .format(table=self._SONG_TABLE_NAME,
+                                    title_column=self._SONG_TABLE_TITLE_COLUMN_NAME))
+        return [row[0] for row in self.cursor.fetchall()]
+
+
     def delete_song(self, song_id):
         """
         Deletes a song from the database.

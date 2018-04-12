@@ -4,6 +4,7 @@ Program entry point.
 import argparse
 
 from client import client
+from server import server
 from server import teacher
 
 import demos
@@ -23,6 +24,7 @@ def main():
     parser.add_argument('-v', help='increase output verbosity', dest='verbose', action='store_true')
     parser.add_argument('-x', help='visualize the algorithm', dest='visualize', action='store_true')
     parser.add_argument('-e', help='echo the recorded sound', dest='echo', action='store_true')
+    parser.add_argument('-s', help='list all songs stored in the database', dest='list_songs', action='store_true')
     parser.add_argument('-l', help='learn the sounds in a directory', dest='path', metavar='PATH')
     parser.add_argument('-d', help='run a demo of the core digital signal processing part of the application',
                         dest='demo', action='store_true')
@@ -30,6 +32,10 @@ def main():
 
     if args.demo:
         demos.demo_all()
+    elif args.list_songs:
+        songs = server.get_all_songs(_DATABASE_PATH)
+        print(*songs, sep='\n')
+        print("Total: {} songs".format(len(songs)))
     elif args.path:
         teacher.teach(args.path, _DATABASE_PATH, visualize=args.visualize)
     else:

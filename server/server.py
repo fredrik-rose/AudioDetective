@@ -35,3 +35,12 @@ def find_audio(fingerprint, database_path, threshold=1, verbose=False, visualize
     if visualize:
         matcher.match(fingerprint, database.get_song_fingerprint(matches[0][0]), matcher.get_default_parameters(), True)
     return database.get_song(matches[0][0]) if len(matches) > 0 else None
+
+
+def get_all_songs(database_path):
+    """
+    Gets the title of all songs stored in the database.
+    :param database_path: Path to database.
+    :return: List of all songs in the database.
+    """
+    return db.FingerprintDatabase(database_path).get_all_songs()
