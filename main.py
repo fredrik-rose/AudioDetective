@@ -7,11 +7,8 @@ from client import client
 from server import server
 from server import teacher
 
+import config
 import demos
-
-
-_DATABASE_PATH = r"D:\Data\AudioDetective"
-_DEFAULT_RECORD_TIME = 5
 
 
 def main():
@@ -19,8 +16,8 @@ def main():
     Main Function.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('-t', help='record time (default: {})'.format(_DEFAULT_RECORD_TIME),
-                        dest='record_time', type=int, metavar='TIME', default=_DEFAULT_RECORD_TIME)
+    parser.add_argument('-t', help='record time (default: {})'.format(config.DEFAULT_RECORD_TIME),
+                        dest='record_time', type=int, metavar='TIME', default=config.DEFAULT_RECORD_TIME)
     parser.add_argument('-v', help='increase output verbosity', dest='verbose', action='store_true')
     parser.add_argument('-x', help='visualize the algorithm', dest='visualize', action='store_true')
     parser.add_argument('-e', help='echo the recorded sound', dest='echo', action='store_true')
@@ -33,13 +30,13 @@ def main():
     if args.demo:
         demos.demo_all()
     elif args.list_songs:
-        songs = server.get_all_songs(_DATABASE_PATH)
+        songs = server.get_all_songs(config.DATABASE_PATH)
         print(*songs, sep='\n')
         print("Total: {} songs".format(len(songs)))
     elif args.path:
-        teacher.teach(args.path, _DATABASE_PATH, visualize=args.visualize)
+        teacher.teach(args.path, config.DATABASE_PATH, visualize=args.visualize)
     else:
-        client.audio_detective(args.record_time, _DATABASE_PATH,
+        client.audio_detective(args.record_time, config.DATABASE_PATH,
                                verbose=args.verbose, visualize=args.visualize, echo=args.echo)
 
 
