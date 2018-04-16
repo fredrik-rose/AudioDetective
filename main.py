@@ -3,12 +3,12 @@ Program entry point.
 """
 import argparse
 
-from client import client
-from server import server
-from server import teacher
+from audiodetective.client import client
+from audiodetective.server import server
+from audiodetective.server import teacher
+from audiodetective import demos
 
 import config
-import demos
 
 
 def main():

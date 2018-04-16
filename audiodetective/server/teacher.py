@@ -8,8 +8,8 @@ import time
 
 import numpy as np
 
-from common import common
-from server import database as db
+from audiodetective.common import common
+from audiodetective.server import database as db
 
 
 _VALID_FILE_TYPES = ('.mp3', '.flac')

@@ -1,7 +1,7 @@
 """
 Signal spectogram.
 """
-import dsp.dft as fourier
+import audiodetective.dsp.dft as fourier
 
 
 def real_spectogram(signal, sampling_frequency, window, overlap=0, dft_count=None):

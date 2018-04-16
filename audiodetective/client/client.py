@@ -5,8 +5,8 @@ import math
 
 import sounddevice as sd
 
-from common import common
-from server import server
+from audiodetective.common import common
+from audiodetective.server import server
 
 
 _MIN_FINGERPRINT_MATCHES_PER_SECOND = 2

@@ -1,7 +1,7 @@
 """
 Signal decimation functions.
 """
-import dsp.windows as windows
+import audiodetective.dsp.windows as windows
 
 
 def decimate(signal, downsampling_factor, filter_order=30):

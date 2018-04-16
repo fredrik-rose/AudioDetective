@@ -5,7 +5,7 @@ import collections as collect
 import numpy as np
 import scipy.ndimage.filters as filters
 
-import audiofingerprint.visualize as visualizer
+import audiodetective.audiofingerprint.visualize as visualizer
 
 
 MatchParameters = collect.namedtuple('MatchParameters',

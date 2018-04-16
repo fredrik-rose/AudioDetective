@@ -2,8 +2,8 @@
 Audio fingerprint server.
 """
 
-import audiofingerprint.match as matcher
-import server.database as db
+import audiodetective.audiofingerprint.match as matcher
+import audiodetective.server.database as db
 
 
 _MAX_NUMBER_OF_MATCHES_TO_PRINT = 10

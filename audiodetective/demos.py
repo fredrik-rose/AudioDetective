@@ -2,13 +2,15 @@
 Demo various DSP functions.
 """
 import math
+
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal as sig
-import dsp.decimation as dec
-import dsp.dft as fourier
-import dsp.spectogram as spec
-import dsp.windows as win
+
+import audiodetective.dsp.decimation as dec
+import audiodetective.dsp.dft as fourier
+import audiodetective.dsp.spectogram as spec
+import audiodetective.dsp.windows as win
 
 
 def demo_all():

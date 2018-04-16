@@ -1,8 +1,8 @@
 """
 Stuff common for both server and client.
 """
-import audiofingerprint.fingerprint as finger
-import dsp.decimation as dec
+import audiodetective.audiofingerprint.fingerprint as finger
+import audiodetective.dsp.decimation as dec
 
 
 SAMPLING_FREQUENCY = 44100

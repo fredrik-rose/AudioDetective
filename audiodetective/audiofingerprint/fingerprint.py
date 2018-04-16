@@ -4,10 +4,10 @@ Audio fingerprinter.
 import collections as collect
 import numpy as np
 
-import audiofingerprint.features as features
-import audiofingerprint.visualize as visualizer
-import dsp.spectogram as spec
-import dsp.windows as win
+import audiodetective.audiofingerprint.features as features
+import audiodetective.audiofingerprint.visualize as visualizer
+import audiodetective.dsp.spectogram as spec
+import audiodetective.dsp.windows as win
 
 
 FingerprintParameters = collect.namedtuple('FingerprintParameters',
