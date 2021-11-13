@@ -53,6 +53,8 @@ as anti-alising filter (to remove frequencies above 5 kHz). The Hamming window r
 The order of the FIR filter controls the width of the transition band (a higher order narrows the transition band but
 increases the computation time).
 
+<img src="img/signal.png" width="1000"/>
+
 ## 2. Fingerprint creation
 
 This part describes the steps to create a fingerprint of the audio signal.
@@ -73,14 +75,18 @@ Since the signal is real valued only half of the result from the Fourier transfo
 the same values as the first part). The values of the first part should be doubled since half of the energy is located
 in the second part of the result (except for the DC and Nyqvist values). The result is also scaled to compensate for the
 effects of the window. Do however note that the doubling and scaling of the values are not needed for this particular
-algorithm. The Fourier transform computation is speed up using the fast fourier transform algorithm.
+algorithm. The Fourier transform computation is speed up using the fast Fourier transform algorithm.
+
+<img src="img/spectogram.png" width="1000"/>
 
 ### 2b. Features
 
 Feature points are extracted from the spectogram by finding peaks using non-maximum suppression. Since the interesting
 information decreases as frequencies increases the non-maximum suppression uses a logarithmic window on the frequency
-axis. Weak peaks are then removed using a percentile of a large neighbourhood of the peak as threshold. Only the time
-and frequency is used for the points, tha amplitude is ignored.
+axis. Weak peaks are then removed using a percentile of a large neighborhood of the peak as threshold. Only the time
+and frequency is used for the points, the amplitude is ignored.
+
+<img src="img/spectogram_with_features.png" width="1000"/>
 
 ### 2c. Fingerprint
 
@@ -91,6 +97,10 @@ presence of much noise or absent of frequencies (e.g. sound played by a mobile p
 for each point pair consisting of the frequency of the points and the time difference. The absolute time of the anchor
 point is kept but not as part of the address.
 
+<img src="img/fingerprints_2.png" width="1000"/>
+
+<img src="img/fingerprints_in_song.png" width="1000"/>
+
 ## 3. Matching
 
 This part describes the matching part of the algorithm.
@@ -100,7 +110,14 @@ This part describes the matching part of the algorithm.
 The addresses of the fingerprints are used to quickly find matching audios in a database of pre-computed fingerprints.
 Only songs with a sufficient number of matching fingerprints are used for further consideration.
 
+<img src="img/matched_fingerprints.png" width="1000"/>
+
 ### 3b. Time coherence verification
+
 Next the time coherency is verified for each candidate by creating a histogram of time offsets between the fingerprints
 of the recorded audio and the database candidate. A large peak in the histogram indicates great time coherency. The
 candidate with the largest amount of time coherent fingerprints is selected as the matching audio.
+
+<img src="img/histogram.png" width="1000"/>
+
+<img src="img/shifted_matched_fingerprints.png" width="1000"/>
