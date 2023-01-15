@@ -1,6 +1,6 @@
 # AudioDetective
 
-An audio identifier application.
+An audio identifier application. Identifies e.g. a song by listening to it for a couple of seconds.
 
 # Usage
 
