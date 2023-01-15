@@ -20,12 +20,12 @@ optional arguments:
               application
 ```
 
-Start by setting the database path in config.py. Then run the application with the '-l' argument and a path to a
-directory containing songs to add them to the database. Finally run the application again with the '-s' argument to
+Start by setting the database path in config.py. Then run the application with the `-l` argument and a path to a
+directory containing songs to add them to the database. Finally run the application again with the `-s` argument to
 verify that the songs have been added to the database. Now the application is ready to identify songs!
 
-If the application has problems identifying songs try a longer record time using the '-t' argument. Try also to play
-back the recorded audio using the '-e' argument to verified that the recording sounds reasonable.
+If the application has problems identifying songs try a longer record time using the `-t` argument. Try also to play
+back the recorded audio using the `-e` argument to verified that the recording sounds reasonable.
 
 ## Dependencies
 
@@ -37,8 +37,8 @@ back the recorded audio using the '-e' argument to verified that the recording s
 
 # Algorithm
 
-This chapter describes the algorithm. It is possible to visualize the algorithm using the '-x' argument when running the
-application. Also a demo of the core digital signal processing used can be run using the '-d' argument.
+This chapter describes the algorithm. It is possible to visualize the algorithm using the `-x` argument when running the
+application. Also a demo of the core digital signal processing used can be run using the `-d` argument.
 
 ## 1. Pre-processing
 
