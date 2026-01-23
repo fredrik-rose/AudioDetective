@@ -1,4 +1,6 @@
-# AudioDetective
+# Audio Detective
+
+<img src="img/logo.png" width="200"/>
 
 An audio identifier application. Identifies e.g. a song by listening to it for a couple of seconds.
 
