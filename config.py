@@ -3,5 +3,5 @@ Application configuration (bad practice since this is unsafe but ok for this toy
 """
 
 
-DATABASE_PATH = r"D:\Data\AudioDetective"
+DATABASE_PATH = r"."
 DEFAULT_RECORD_TIME = 5

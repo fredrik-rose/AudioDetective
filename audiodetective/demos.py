@@ -77,8 +77,8 @@ def demo_windows():
         Verifies windows against SciPy's implementation.
         :return: None.
         """
-        assert np.max(np.abs(win.hamming(12) - sig.hamming(12, False))) < 1e-15
-        assert np.max(np.abs(win.hamming(13) - sig.hamming(13, True))) < 1e-15
+        assert np.max(np.abs(win.hamming(12) - sig.windows.hamming(12, False))) < 1e-15
+        assert np.max(np.abs(win.hamming(13) - sig.windows.hamming(13, True))) < 1e-15
         assert np.max(dec.anti_aliasing_window(0.3, 64) - sig.firwin(65, 0.3, window='hamming')) \
                < 1e-4
         assert np.max(win.fir(65, 0.3) - sig.firwin(65, 0.3, window='boxcar')) < 1e-3

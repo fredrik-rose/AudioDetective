@@ -6,6 +6,7 @@ An audio identifier application. Identifies e.g. a song by listening to it for a
 
 # Usage
 
+
 ```
 $ python main.py -h
 usage: main.py [-h] [-t TIME] [-v] [-x] [-e] [-s] [-l PATH] [-d]
@@ -22,6 +23,13 @@ optional arguments:
               application
 ```
 
+To create the environment one can use Miniconda:
+
+```
+conda env create -f environment.yml
+conda activate audiodetective
+```
+
 Start by setting the database path in config.py. Then run the application with the `-l` argument and a path to a
 directory containing songs to add them to the database. Finally run the application again with the `-s` argument to
 verify that the songs have been added to the database. Now the application is ready to identify songs!
@@ -31,11 +39,7 @@ back the recorded audio using the `-e` argument to verified that the recording s
 
 ## Dependencies
 
-* matplotlib
-* numpy
-* scipy
-* sounddevice
-* FFmpeg installed and added to path
+* FFmpeg installed and added to path.
 
 # Algorithm
 
