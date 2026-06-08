@@ -37,10 +37,6 @@ verify that the songs have been added to the database. Now the application is re
 If the application has problems identifying songs try a longer record time using the `-t` argument. Try also to play
 back the recorded audio using the `-e` argument to verified that the recording sounds reasonable.
 
-## Dependencies
-
-* FFmpeg installed and added to path.
-
 # Algorithm
 
 This chapter describes the algorithm. It is possible to visualize the algorithm using the `-x` argument when running the
